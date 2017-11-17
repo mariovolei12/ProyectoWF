@@ -158,7 +158,7 @@
             this.btCerrar.Name = "btCerrar";
             this.btCerrar.Size = new System.Drawing.Size(60, 26);
             this.btCerrar.TabIndex = 4;
-            this.btCerrar.Text = "Cerrar";
+            this.btCerrar.Text = "Probando";
             this.btCerrar.UseVisualStyleBackColor = true;
             // 
             // tableLayoutPanel3

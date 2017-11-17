@@ -11,10 +11,10 @@ using System.Windows.Forms;
 
 namespace ProyectoWF
 {
-    public partial class FormListadoProveedores : Form
+    public partial class FrmListadoEmpleados : Form
     {
-
-        public FormListadoProveedores()
+        
+        public FrmListadoEmpleados()
         {
             InitializeComponent();
             splitContainer1.IsSplitterFixed = true;
@@ -25,19 +25,20 @@ namespace ProyectoWF
 
         //Conexion
 
-        SqlConnection con = new SqlConnection("Data Source = (localdb)\\MSSQLLocalDB;" +
-            "Initial Catalog = ProyectoWF; Integrated Security = True;" +
-            "Connect Timeout = 30; Encrypt=False;TrustServerCertificate=True;" +
+        SqlConnection con = new SqlConnection("Data Source = (localdb)\\MSSQLLocalDB;"+
+            "Initial Catalog = ProyectoWF; Integrated Security = True;"+
+            "Connect Timeout = 30; Encrypt=False;TrustServerCertificate=True;"+
             "ApplicationIntent=ReadWrite;MultiSubnetFailover=False");
         SqlDataAdapter adapter;
         DataTable table;
+        SqlDataReader reader;
         SqlCommand command;
 
-
+        
         public void consulta()
         {
             string sql = "SELECT * FROM Empleados";
-            command = new SqlCommand(sql, con);
+            command = new SqlCommand(sql,con);
             adapter = new SqlDataAdapter(command);
             table = new DataTable();
             adapter.Fill(table);
@@ -60,7 +61,7 @@ namespace ProyectoWF
 
             }
 
-
+           
         }
     }
 }

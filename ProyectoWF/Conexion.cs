@@ -31,8 +31,7 @@ namespace ProyectoWF {
             {
                 Console.WriteLine("error");
             }
-
-
+            
             return conexion;
         }
 

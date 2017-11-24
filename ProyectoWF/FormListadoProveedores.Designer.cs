@@ -31,13 +31,13 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormListadoProveedores));
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.button6 = new System.Windows.Forms.Button();
+            this.btBuscar = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tbTelefono = new System.Windows.Forms.TextBox();
+            this.tbNombre = new System.Windows.Forms.TextBox();
+            this.tbCiudad = new System.Windows.Forms.TextBox();
+            this.tbCompany = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -46,7 +46,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button5 = new System.Windows.Forms.Button();
+            this.btAbrirBusqueda = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -77,13 +77,13 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.button6);
+            this.groupBox1.Controls.Add(this.btBuscar);
             this.groupBox1.Controls.Add(this.label5);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.textBox4);
-            this.groupBox1.Controls.Add(this.textBox3);
-            this.groupBox1.Controls.Add(this.textBox2);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.tbTelefono);
+            this.groupBox1.Controls.Add(this.tbNombre);
+            this.groupBox1.Controls.Add(this.tbCiudad);
+            this.groupBox1.Controls.Add(this.tbCompany);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -95,19 +95,19 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda avanzada";
             // 
-            // button6
+            // btBuscar
             // 
-            this.button6.Location = new System.Drawing.Point(523, 60);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(75, 23);
-            this.button6.TabIndex = 20;
-            this.button6.Text = "Buscar";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btBuscar.Location = new System.Drawing.Point(544, 60);
+            this.btBuscar.Name = "btBuscar";
+            this.btBuscar.Size = new System.Drawing.Size(75, 23);
+            this.btBuscar.TabIndex = 20;
+            this.btBuscar.Text = "Buscar";
+            this.btBuscar.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(275, 66);
+            this.label5.Location = new System.Drawing.Point(296, 66);
             this.label5.Margin = new System.Windows.Forms.Padding(10);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(49, 13);
@@ -117,49 +117,53 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(275, 26);
+            this.label4.Location = new System.Drawing.Point(296, 26);
             this.label4.Margin = new System.Windows.Forms.Padding(10);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(51, 13);
+            this.label4.Size = new System.Drawing.Size(44, 13);
             this.label4.TabIndex = 18;
-            this.label4.Text = "Company";
+            this.label4.Text = "Nombre";
             // 
-            // textBox4
+            // tbTelefono
             // 
-            this.textBox4.Location = new System.Drawing.Point(330, 63);
-            this.textBox4.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(180, 20);
-            this.textBox4.TabIndex = 17;
+            this.tbTelefono.Location = new System.Drawing.Point(351, 63);
+            this.tbTelefono.Margin = new System.Windows.Forms.Padding(10);
+            this.tbTelefono.Name = "tbTelefono";
+            this.tbTelefono.Size = new System.Drawing.Size(180, 20);
+            this.tbTelefono.TabIndex = 17;
+            this.tbTelefono.TextChanged += new System.EventHandler(this.TextBoxesFiltro_TextChanged);
             // 
-            // textBox3
+            // tbNombre
             // 
-            this.textBox3.Location = new System.Drawing.Point(330, 23);
-            this.textBox3.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(180, 20);
-            this.textBox3.TabIndex = 16;
+            this.tbNombre.Location = new System.Drawing.Point(351, 23);
+            this.tbNombre.Margin = new System.Windows.Forms.Padding(10);
+            this.tbNombre.Name = "tbNombre";
+            this.tbNombre.Size = new System.Drawing.Size(180, 20);
+            this.tbNombre.TabIndex = 16;
+            this.tbNombre.TextChanged += new System.EventHandler(this.TextBoxesFiltro_TextChanged);
             // 
-            // textBox2
+            // tbCiudad
             // 
-            this.textBox2.Location = new System.Drawing.Point(63, 63);
-            this.textBox2.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(180, 20);
-            this.textBox2.TabIndex = 15;
+            this.tbCiudad.Location = new System.Drawing.Point(84, 63);
+            this.tbCiudad.Margin = new System.Windows.Forms.Padding(10);
+            this.tbCiudad.Name = "tbCiudad";
+            this.tbCiudad.Size = new System.Drawing.Size(180, 20);
+            this.tbCiudad.TabIndex = 15;
+            this.tbCiudad.TextChanged += new System.EventHandler(this.TextBoxesFiltro_TextChanged);
             // 
-            // textBox1
+            // tbCompany
             // 
-            this.textBox1.Location = new System.Drawing.Point(63, 23);
-            this.textBox1.Margin = new System.Windows.Forms.Padding(10);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(180, 20);
-            this.textBox1.TabIndex = 14;
+            this.tbCompany.Location = new System.Drawing.Point(84, 23);
+            this.tbCompany.Margin = new System.Windows.Forms.Padding(10);
+            this.tbCompany.Name = "tbCompany";
+            this.tbCompany.Size = new System.Drawing.Size(180, 20);
+            this.tbCompany.TabIndex = 14;
+            this.tbCompany.TextChanged += new System.EventHandler(this.TextBoxesFiltro_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 66);
+            this.label3.Location = new System.Drawing.Point(24, 66);
             this.label3.Margin = new System.Windows.Forms.Padding(10);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(40, 13);
@@ -172,9 +176,9 @@
             this.label2.Location = new System.Drawing.Point(13, 26);
             this.label2.Margin = new System.Windows.Forms.Padding(10);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 13);
+            this.label2.Size = new System.Drawing.Size(56, 13);
             this.label2.TabIndex = 12;
-            this.label2.Text = "Nombre";
+            this.label2.Text = "Compañía";
             // 
             // tableLayoutPanel1
             // 
@@ -188,7 +192,7 @@
             this.tableLayoutPanel1.Controls.Add(this.button3, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button4, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.button5, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btAbrirBusqueda, 0, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -251,21 +255,21 @@
             this.dataGridView1.Size = new System.Drawing.Size(864, 423);
             this.dataGridView1.TabIndex = 4;
             // 
-            // button5
+            // btAbrirBusqueda
             // 
-            this.button5.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.button5.AutoSize = true;
-            this.button5.Image = ((System.Drawing.Image)(resources.GetObject("button5.Image")));
-            this.button5.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.button5.Location = new System.Drawing.Point(10, 10);
-            this.button5.Margin = new System.Windows.Forms.Padding(10);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(102, 32);
-            this.button5.TabIndex = 0;
-            this.button5.Text = "Abrir búsqueda";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = true;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
+            this.btAbrirBusqueda.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.btAbrirBusqueda.AutoSize = true;
+            this.btAbrirBusqueda.Image = ((System.Drawing.Image)(resources.GetObject("btAbrirBusqueda.Image")));
+            this.btAbrirBusqueda.ImageAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btAbrirBusqueda.Location = new System.Drawing.Point(10, 10);
+            this.btAbrirBusqueda.Margin = new System.Windows.Forms.Padding(10);
+            this.btAbrirBusqueda.Name = "btAbrirBusqueda";
+            this.btAbrirBusqueda.Size = new System.Drawing.Size(102, 32);
+            this.btAbrirBusqueda.TabIndex = 0;
+            this.btAbrirBusqueda.Text = "Abrir búsqueda";
+            this.btAbrirBusqueda.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btAbrirBusqueda.UseVisualStyleBackColor = true;
+            this.btAbrirBusqueda.Click += new System.EventHandler(this.btAbrirBusqueda_Click);
             // 
             // FormListadoProveedores
             // 
@@ -275,7 +279,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Name = "FormListadoProveedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Listado de Proveedores";
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
@@ -298,15 +302,15 @@
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.Button button4;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.Button button5;
+        private System.Windows.Forms.Button btAbrirBusqueda;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Button button6;
+        private System.Windows.Forms.Button btBuscar;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox4;
-        private System.Windows.Forms.TextBox textBox3;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox tbTelefono;
+        private System.Windows.Forms.TextBox tbNombre;
+        private System.Windows.Forms.TextBox tbCiudad;
+        private System.Windows.Forms.TextBox tbCompany;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
     }

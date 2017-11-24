@@ -65,12 +65,9 @@ namespace ProyectoWF
             {
                 btAbrirBusqueda.Text = "Abrir búsqueda";
                 splitContainer1.Panel1Collapsed = true;
-
             }
         }
-
-        int a = 0; //Tomará valores 1,2,3 o 4 dependiendo del textBox de filtrado en el que se haya escrito primero.
-
+        
         private void TextBoxesFiltro_TextChanged(object sender, EventArgs e)
         {
             int iEntro = 0;
@@ -131,7 +128,7 @@ namespace ProyectoWF
                 int count = 0;
                 DataGridViewRow filaborrar;
                 int id;
-                DialogResult dr = MessageBox.Show("¿Esta seguro de borrar los datos seleccionados?", "Atencion",
+                DialogResult dr = MessageBox.Show("¿Está seguro de borrar los datos seleccionados?", "Atención",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
                 if (dr == DialogResult.Yes)
@@ -158,6 +155,50 @@ namespace ProyectoWF
                     cargar();
                 }
             }
+        }
+
+        private void btNuevo_Click(object sender, EventArgs e)
+        {
+            FormProveedores formAltaPro = new FormProveedores();
+            formAltaPro.FormClosed += new FormClosedEventHandler(FormProveedores_FormClosed);
+            formAltaPro.ShowDialog();
+            
+        }
+
+        //Actualizar dataGridView al cerrar form de Alta/Modificar
+        private void FormProveedores_FormClosed(Object sender, FormClosedEventArgs args)
+        {
+            cargar();
+        }
+
+        private void btModificar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 1)
+            {
+                DataGridViewRow row = dataGridView1.SelectedRows[0];
+                int id = (int)row.Cells["ProveedorID"].Value;
+
+                FormProveedores formModificarPro = new FormProveedores(1, id);
+                formModificarPro.FormClosed += new FormClosedEventHandler(FormProveedores_FormClosed);
+                formModificarPro.ShowDialog();
+
+            } else if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Selecciona una fila!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else if (dataGridView1.SelectedRows.Count > 1)
+            {
+                MessageBox.Show("Selecciona solamente una fila para modificar!", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void dataGridView1_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int idFila = dataGridView1.SelectedCells[0].RowIndex;
+            int id = (int)dataGridView1.Rows[idFila].Cells["ProveedorID"].Value;
+
+            FormProveedores formDetallePro = new FormProveedores(2, id);
+            formDetallePro.ShowDialog();
         }
     }
 }

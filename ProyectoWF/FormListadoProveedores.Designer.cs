@@ -41,11 +41,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.btNuevo = new System.Windows.Forms.Button();
-            this.btModificar = new System.Windows.Forms.Button();
             this.btBorrar = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.btAbrirBusqueda = new System.Windows.Forms.Button();
+            this.btModificar = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -89,7 +89,7 @@
             this.groupBox1.Location = new System.Drawing.Point(10, 10);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(10);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(864, 99);
+            this.groupBox1.Size = new System.Drawing.Size(130, 99);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Busqueda avanzada";
@@ -178,11 +178,11 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tableLayoutPanel1.Controls.Add(this.btNuevo, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.btModificar, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.btBorrar, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.button4, 3, 2);
             this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.btAbrirBusqueda, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btModificar, 2, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
@@ -195,33 +195,25 @@
             // 
             // btNuevo
             // 
+            this.btNuevo.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.btNuevo.Image = ((System.Drawing.Image)(resources.GetObject("btNuevo.Image")));
-            this.btNuevo.Location = new System.Drawing.Point(609, 10);
+            this.btNuevo.Location = new System.Drawing.Point(699, 14);
             this.btNuevo.Margin = new System.Windows.Forms.Padding(10);
             this.btNuevo.Name = "btNuevo";
-            this.btNuevo.Size = new System.Drawing.Size(75, 32);
-            this.btNuevo.TabIndex = 0;
+            this.btNuevo.Size = new System.Drawing.Size(30, 23);
+            this.btNuevo.TabIndex = 51;
             this.btNuevo.UseVisualStyleBackColor = true;
-            // 
-            // btModificar
-            // 
-            this.btModificar.Image = ((System.Drawing.Image)(resources.GetObject("btModificar.Image")));
-            this.btModificar.Location = new System.Drawing.Point(704, 10);
-            this.btModificar.Margin = new System.Windows.Forms.Padding(10);
-            this.btModificar.Name = "btModificar";
-            this.btModificar.Size = new System.Drawing.Size(75, 32);
-            this.btModificar.TabIndex = 1;
-            this.btModificar.UseVisualStyleBackColor = true;
+            this.btNuevo.Click += new System.EventHandler(this.btNuevo_Click);
             // 
             // btBorrar
             // 
-            this.btBorrar.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.btBorrar.Anchor = System.Windows.Forms.AnchorStyles.Left;
             this.btBorrar.Image = ((System.Drawing.Image)(resources.GetObject("btBorrar.Image")));
-            this.btBorrar.Location = new System.Drawing.Point(799, 10);
+            this.btBorrar.Location = new System.Drawing.Point(799, 14);
             this.btBorrar.Margin = new System.Windows.Forms.Padding(10);
             this.btBorrar.Name = "btBorrar";
-            this.btBorrar.Size = new System.Drawing.Size(75, 32);
-            this.btBorrar.TabIndex = 2;
+            this.btBorrar.Size = new System.Drawing.Size(30, 23);
+            this.btBorrar.TabIndex = 52;
             this.btBorrar.UseVisualStyleBackColor = true;
             this.btBorrar.Click += new System.EventHandler(this.btBorrar_Click);
             // 
@@ -237,14 +229,17 @@
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.tableLayoutPanel1.SetColumnSpan(this.dataGridView1, 4);
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(10, 62);
             this.dataGridView1.Margin = new System.Windows.Forms.Padding(10);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(864, 546);
             this.dataGridView1.TabIndex = 4;
+            this.dataGridView1.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellDoubleClick);
             // 
             // btAbrirBusqueda
             // 
@@ -262,6 +257,18 @@
             this.btAbrirBusqueda.UseVisualStyleBackColor = true;
             this.btAbrirBusqueda.Click += new System.EventHandler(this.btAbrirBusqueda_Click);
             // 
+            // btModificar
+            // 
+            this.btModificar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btModificar.Image = ((System.Drawing.Image)(resources.GetObject("btModificar.Image")));
+            this.btModificar.Location = new System.Drawing.Point(749, 14);
+            this.btModificar.Margin = new System.Windows.Forms.Padding(10);
+            this.btModificar.Name = "btModificar";
+            this.btModificar.Size = new System.Drawing.Size(30, 23);
+            this.btModificar.TabIndex = 50;
+            this.btModificar.UseVisualStyleBackColor = true;
+            this.btModificar.Click += new System.EventHandler(this.btModificar_Click);
+            // 
             // FormListadoProveedores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -271,6 +278,7 @@
             this.Name = "FormListadoProveedores";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Listado de Proveedores";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.splitContainer1.Panel1.ResumeLayout(false);
             this.splitContainer1.Panel2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();

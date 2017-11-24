@@ -73,52 +73,91 @@ namespace ProyectoWF
 
         private void TextBoxesFiltro_TextChanged(object sender, EventArgs e)
         {
-            string nombre = ((TextBox)sender).Name; //nombre del textBox que llama al método
-
-            int a = 0;
-            if (tbCompany.Text=="" && tbNombre.Text=="" && tbCiudad.Text=="" && tbTelefono.Text=="")
+            int iEntro = 0;
+            switch (((TextBox)sender).Name)
             {
-                a = 0;
+                case "tbNombre":
+                    iEntro = 1;
+                    bs.Filter = "ContactoNombre LIKE '%" + tbNombre.Text + "%'";
+                    break;
+                case "tbCompany":
+                    iEntro = 2;
+                    bs.Filter = "NombreCompania LIKE '%" + tbCompany.Text + "%'";
+                    break;
+                case "tbCiudad":
+                    iEntro = 3;
+                    bs.Filter = "Ciudad LIKE '%" + tbCiudad.Text + "%'";
+                    break;
+                case "tbTelefono":
+                    iEntro = 4;
+                    bs.Filter = "Telefono LIKE '%" + tbTelefono.Text + "%'";
+                    break;
+            }
+            if ((iEntro != 1) && (tbNombre.Text != ""))
+            {
+                bs.Filter = bs.Filter + " AND ContactoNombre LIKE '%" + tbNombre.Text + "%'";
             }
 
-            if (a==0 && nombre == tbCompany.Name)
+            if ((iEntro != 2) && (tbCompany.Text != ""))
             {
-                a = 1;
-                bs.Filter = string.Format("NombreCompania LIKE '%{0}%'", tbNombre.Text);
+                bs.Filter = bs.Filter + " AND NombreCompania LIKE '%" + tbCompany.Text + "%'";
             }
 
-            if (a==0 && nombre == tbNombre.Name)
+            if ((iEntro != 3) && (tbCiudad.Text != ""))
             {
-                a = 2;
-                bs.Filter = string.Format("ContactNombre LIKE '%{0}%'", tbCompany.Text);
-                
+                bs.Filter = bs.Filter + " AND Ciudad LIKE '%" + tbCiudad.Text + "%'";
             }
 
-            if (a==0 && nombre == tbCiudad.Name)
+            if ((iEntro != 4) && (tbTelefono.Text != ""))
             {
-                a = 3;
-                bs.Filter = string.Format("Ciudad LIKE '%{0}%'", tbCiudad.Text);
+                bs.Filter = bs.Filter + " AND Telefono LIKE '%" + tbTelefono.Text + "%'";
             }
 
-            if (a==0 && nombre == tbTelefono.Name)
+            if (tbNombre.Text == "" && tbCompany.Text == "" && tbCiudad.Text == "" && tbTelefono.Text == "")
             {
-                a = 4;
-                bs.Filter = string.Format("Telefono LIKE '%{0}%'", tbTelefono.Text);
+                bs.Filter = "";
             }
 
-
+            dataGridView1.DataSource = bs;
         }
 
+        private void btBorrar_Click(object sender, EventArgs e)
+        {
+            if (dataGridView1.SelectedRows.Count == 0)
+            {
+                MessageBox.Show("Seleccione una fila!", "", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else
+            {
+                int count = 0;
+                DataGridViewRow filaborrar;
+                int id;
+                DialogResult dr = MessageBox.Show("¿Esta seguro de borrar los datos seleccionados?", "Atencion",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Information);
 
-        //public void consulta()
-        //{
-        //    string sql = "SELECT * FROM Proveedores";
-        //    command = new SqlCommand(sql, con);
-        //    adapter = new SqlDataAdapter(command);
-        //    table = new DataTable();
-        //    adapter.Fill(table);
-        //    dataGridView1.DataSource = table;
-        //    //dataGridView1.AutoSize = true;
-        //}
+                if (dr == DialogResult.Yes)
+                {
+                    for (int i = 0; i < dataGridView1.Rows.Count; i++)
+                    {
+                        filaborrar = dataGridView1.Rows[i];
+                        if (filaborrar.Selected == true)
+                        {
+                            id = (int)dataGridView1.Rows[i].Cells["ProveedorID"].Value;
+                            try
+                            {
+                                con.OpenAsync();
+                                SqlCommand cmd = new SqlCommand("DELETE FROM Proveedores WHERE ProveedorID=" + id + "", con);
+                                count += cmd.ExecuteNonQuery();
+                            }
+                            catch (Exception ex)
+                            {
+                                MessageBox.Show(ex.ToString());
+                            }
+                        }
+                    }
+                    MessageBox.Show(count + " filas borradas", "", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cargar();
+                }
+            }
+        }
     }
 }

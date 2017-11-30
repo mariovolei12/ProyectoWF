@@ -35,6 +35,7 @@ namespace ProyectoWF
             
             dataGridView1.Columns["ProveedorID"].Visible = false;
             dataGridView1.Columns["Logo"].Visible = false;
+            
         }
         
 
@@ -160,13 +161,13 @@ namespace ProyectoWF
         private void btNuevo_Click(object sender, EventArgs e)
         {
             FormProveedores formAltaPro = new FormProveedores();
-            formAltaPro.FormClosed += new FormClosedEventHandler(FormProveedores_FormClosed);
+            formAltaPro.FormClosed += new FormClosedEventHandler(FormAltaProveedores_FormClosed);
             formAltaPro.ShowDialog();
             
         }
 
         //Actualizar dataGridView al cerrar form de Alta/Modificar
-        private void FormProveedores_FormClosed(Object sender, FormClosedEventArgs args)
+        private void FormAltaProveedores_FormClosed(Object sender, FormClosedEventArgs args)
         {
             cargar();
         }
@@ -179,7 +180,7 @@ namespace ProyectoWF
                 int id = (int)row.Cells["ProveedorID"].Value;
 
                 FormProveedores formModificarPro = new FormProveedores(1, id);
-                formModificarPro.FormClosed += new FormClosedEventHandler(FormProveedores_FormClosed);
+                formModificarPro.FormClosed += new FormClosedEventHandler(FormAltaProveedores_FormClosed);
                 formModificarPro.ShowDialog();
 
             } else if (dataGridView1.SelectedRows.Count == 0)
@@ -200,5 +201,24 @@ namespace ProyectoWF
             FormProveedores formDetallePro = new FormProveedores(2, id);
             formDetallePro.ShowDialog();
         }
+
+        public void ajustarFormulario(int ancho, int alto)
+        {
+            /*
+             El tamaño mínimo del formulario es 700:430
+             */
+            
+            this.Width = ancho;
+            this.Height = alto;
+        }
+
+        private void FormListadoProveedores_Resize(object sender, EventArgs e)
+        {
+            if (!splitContainer1.Panel1Collapsed)
+            {
+                splitContainer1.SplitterDistance = 120;
+            }
+        }
+        
     }
 }
